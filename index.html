@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffe6e6; /* light pink background */
+      font-family: 'Arial', sans-serif;
+      background-image: url('romantic_background.jpg'); /* Replace with your romantic background image */
+      background-size: cover;
+      background-position: center;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em; /* Larger font size */
+      color: #ff4d4d; /* red heart color */
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1.5em; /* Larger font size */
+      cursor: pointer;
+      background-color: #ff4d4d; /* red button */
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .hearts-and-flowers {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .hearts-and-flowers div {
+      position: absolute;
+      animation: fall 10s linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100vh);
+      }
+      100% {
+        transform: translateY(100vh);
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em; /* Adjusted font size for smaller screens */
+      }
+
+      button {
+        font-size: 1.2em; /* Adjusted font size for smaller screens */
+      }
+    }
+  </style>
+  <title>Will You Be My Valentine?</title>
+</head>
+<body>
+  <div class="container">
+    <h1>My Dearest Love, Will You Be My Valentine? <span style="color: #ff4d4d;">&#10084;&#65039;</span></h1> <!-- Red heart emoji -->
+    <p>🌹🌹🌹</p> <!-- Red rose emojis -->
+    <label for="valentineCheckbox">Check the box to accept my proposal:</label>
+    <input type="checkbox" id="valentineCheckbox">
+    <button id="valentineButton">Accept</button>
+    <p id="response"></p>
+  </div>
+  <div class="hearts-and-flowers" id="heartsAndFlowers"></div>
+  <script>
+    document.getElementById('valentineButton').addEventListener('click', function() {
+      var response = document.getElementById('valentineCheckbox').checked;
+      if (response) {
+        document.getElementById('response').textContent = 'Yes, I will be your Valentine! I love you! 💕';
+        showHeartsAndFlowers();
+      } else {
+        document.getElementById('response').textContent = 'You are stuck with me, my love! 😄'; // Playful response
+        showHeartsAndFlowers();
+      }
+    });
+
+    function showHeartsAndFlowers() {
+      const heartsAndFlowers = document.getElementById('heartsAndFlowers');
+      for (let i = 0; i < 200; i++) { // Increased number of hearts and flowers
+        const heart = document.createElement('div');
+        heart.innerText = '💕';
+        heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+        heartsAndFlowers.appendChild(heart);
+
+        const flower = document.createElement('div');
+        flower.innerText = '🌹';
+        flower.style.fontSize = Math.random() * 20 + 10 + 'px';
+        flower.style.left = Math.random() * 100 + 'vw';
+        flower.style.top = Math.random() * 100 + 'vh';
+        flower.style.animationDuration = Math.random() * 2 + 5 + 's';
+        heartsAndFlowers.appendChild(flower);
+      }
+    }
+  </script>
+</body>
+</html>
